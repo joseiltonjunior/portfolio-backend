@@ -1,14 +1,10 @@
 import { ExperienceModel } from '../model/Experience';
+import {
+  ICreateExperienceDTO,
+  IExperiencesRepository,
+} from './IExperiencesRepository';
 
-interface ICreateExperienceDTO {
-  name: string;
-  office: string;
-  activities: string;
-  technologies: string;
-  time: Date;
-}
-
-class ExperiencesRepository {
+class ExperiencesRepository implements IExperiencesRepository {
   private experiences: ExperienceModel[];
 
   constructor() {
@@ -21,7 +17,7 @@ class ExperiencesRepository {
     activities,
     technologies,
     time,
-  }: ICreateExperienceDTO) {
+  }: ICreateExperienceDTO): void {
     const experience = new ExperienceModel();
 
     Object.assign(experience, {
@@ -39,7 +35,7 @@ class ExperiencesRepository {
     return this.experiences;
   }
 
-  findyByName(name: string, office: string): ExperienceModel {
+  findByName(name: string, office: string): ExperienceModel {
     const experience = this.experiences.find(
       experience => experience.name === name && experience.office === office,
     );

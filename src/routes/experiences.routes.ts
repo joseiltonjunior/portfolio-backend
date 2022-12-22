@@ -1,7 +1,6 @@
 import { Router } from 'express';
-
-import { ExperiencesRepository } from '../repositories/ExperiencesRepository';
-import { CreateExperienceService } from '../services/CreateExperienceService';
+import { ExperiencesRepository } from '../modules/experiences/repositories/ExperiencesRepository';
+import { CreateExperienceService } from '../modules/experiences/services/CreateExperienceService';
 
 const experiencesRoutes = Router();
 const experiencesRepository = new ExperiencesRepository();

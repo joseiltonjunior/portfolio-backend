@@ -1,4 +1,4 @@
-import { ExperiencesRepository } from '../repositories/ExperiencesRepository';
+import { IExperiencesRepository } from '../repositories/IExperiencesRepository';
 
 interface IRequest {
   name: string;
@@ -9,10 +9,10 @@ interface IRequest {
 }
 
 class CreateExperienceService {
-  constructor(private experiencesRepository: ExperiencesRepository) {}
+  constructor(private experiencesRepository: IExperiencesRepository) {}
 
   execute({ name, office, activities, technologies, time }: IRequest) {
-    const experienceAlreadyExists = this.experiencesRepository.findyByName(
+    const experienceAlreadyExists = this.experiencesRepository.findByName(
       name,
       office,
     );
