@@ -1,21 +1,27 @@
-import { ExperienceModel } from "../model/Experience"
+import { ExperienceModel } from '../model/Experience';
 
 interface ICreateExperienceDTO {
-  name: string,
-  office: string,
-  activities: string,
-  technologies: string,
-  time: Date
+  name: string;
+  office: string;
+  activities: string;
+  technologies: string;
+  time: Date;
 }
 
 class ExperiencesRepository {
-  private experiences: ExperienceModel[]
+  private experiences: ExperienceModel[];
 
   constructor() {
-    this.experiences = []
+    this.experiences = [];
   }
 
-  create({ name, office, activities, technologies, time }: ICreateExperienceDTO) {
+  create({
+    name,
+    office,
+    activities,
+    technologies,
+    time,
+  }: ICreateExperienceDTO) {
     const experience = new ExperienceModel();
 
     Object.assign(experience, {
@@ -23,10 +29,10 @@ class ExperiencesRepository {
       office,
       activities,
       technologies,
-      time
-    })
+      time,
+    });
 
-    this.experiences.push(experience)
+    this.experiences.push(experience);
   }
 
   list(): ExperienceModel[] {
@@ -34,9 +40,11 @@ class ExperiencesRepository {
   }
 
   findyByName(name: string, office: string): ExperienceModel {
-    const experience = this.experiences.find((experience) => experience.name === name && experience.office === office)
-    return experience
+    const experience = this.experiences.find(
+      experience => experience.name === name && experience.office === office,
+    );
+    return experience;
   }
 }
 
-export { ExperiencesRepository }
+export { ExperiencesRepository };

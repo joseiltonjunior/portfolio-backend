@@ -1,25 +1,34 @@
-import { ExperiencesRepository } from "../repositories/ExperiencesRepository";
+import { ExperiencesRepository } from '../repositories/ExperiencesRepository';
 
 interface IRequest {
-  name: string,
-  office: string,
-  activities: string,
-  technologies: string,
-  time: Date
+  name: string;
+  office: string;
+  activities: string;
+  technologies: string;
+  time: Date;
 }
 
 class CreateExperienceService {
-  constructor(private experiencesRepository: ExperiencesRepository) { }
+  constructor(private experiencesRepository: ExperiencesRepository) {}
 
   execute({ name, office, activities, technologies, time }: IRequest) {
-    const experienceAlreadyExists = this.experiencesRepository.findyByName(name, office);
+    const experienceAlreadyExists = this.experiencesRepository.findyByName(
+      name,
+      office,
+    );
 
     if (experienceAlreadyExists) {
-      throw new Error("Experience already exists!")
+      throw new Error('Experience already exists!');
     }
 
-    this.experiencesRepository.create({ name, office, activities, technologies, time })
+    this.experiencesRepository.create({
+      name,
+      office,
+      activities,
+      technologies,
+      time,
+    });
   }
 }
 
-export { CreateExperienceService } 
+export { CreateExperienceService };
