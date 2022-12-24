@@ -1,34 +1,16 @@
 import { Router } from 'express';
-import { ExperiencesRepository } from '../modules/experiences/repositories/ExperiencesRepository';
-import { CreateExperienceService } from '../modules/experiences/services/CreateExperienceService';
+
+import { createExperienceController } from '../modules/experiences/useCases/createExperience';
+import { listExperienceController } from '../modules/experiences/useCases/listExperiences';
 
 const experiencesRoutes = Router();
-const experiencesRepository = new ExperiencesRepository();
 
 experiencesRoutes.post('/', (req, res) => {
-  const { name, office, activities, technologies, time } = req.body;
-
-  const createExperienceService = new CreateExperienceService(
-    experiencesRepository,
-  );
-
-  createExperienceService.execute({
-    name,
-    office,
-    activities,
-    technologies,
-    time,
-  });
-
-  return res.status(201).json({ message: 'Successfully created experience' });
+  return createExperienceController.handle(req, res);
 });
 
 experiencesRoutes.get('/', (req, res) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-
-  const all = experiencesRepository.list();
-
-  return res.json(all);
+  return listExperienceController.handle(req, res);
 });
 
 export { experiencesRoutes };

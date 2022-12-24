@@ -4,8 +4,17 @@ import { ICreateSkillDTO, ISkillsRepository } from './ISkillsRepository';
 class SkillsRepository implements ISkillsRepository {
   private Skills: SkillModel[];
 
-  constructor() {
+  private static INSTANCE: SkillsRepository;
+
+  private constructor() {
     this.Skills = [];
+  }
+  public static getInstance(): SkillsRepository {
+    if (!SkillsRepository.INSTANCE) {
+      SkillsRepository.INSTANCE = new SkillsRepository();
+    }
+
+    return SkillsRepository.INSTANCE;
   }
 
   create({ name, url }: ICreateSkillDTO): void {

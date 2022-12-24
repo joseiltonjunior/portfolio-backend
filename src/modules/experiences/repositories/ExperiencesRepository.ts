@@ -7,8 +7,18 @@ import {
 class ExperiencesRepository implements IExperiencesRepository {
   private experiences: ExperienceModel[];
 
-  constructor() {
+  private static INSTANCE: ExperiencesRepository;
+
+  private constructor() {
     this.experiences = [];
+  }
+
+  public static getInstance(): ExperiencesRepository {
+    if (!ExperiencesRepository.INSTANCE) {
+      ExperiencesRepository.INSTANCE = new ExperiencesRepository();
+    }
+
+    return ExperiencesRepository.INSTANCE;
   }
 
   create({
