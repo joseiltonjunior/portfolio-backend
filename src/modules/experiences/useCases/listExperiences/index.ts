@@ -1,4 +1,4 @@
-import { ExperiencesRepository } from '../../repositories/ExperiencesRepository';
+import { ExperiencesRepository } from '../../repositories/implementations/ExperiencesRepository';
 import { ListExperiencesController } from './ListExperiencesController';
 import { ListExperiencesUseCase } from './ListExperiencesUseCase';
 

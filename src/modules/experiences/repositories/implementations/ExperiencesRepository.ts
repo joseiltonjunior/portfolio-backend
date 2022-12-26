@@ -1,8 +1,8 @@
-import { ExperienceModel } from '../model/Experience';
+import { ExperienceModel } from '../../model/Experience';
 import {
   ICreateExperienceDTO,
   IExperiencesRepository,
-} from './IExperiencesRepository';
+} from '../IExperiencesRepository';
 
 class ExperiencesRepository implements IExperiencesRepository {
   private experiences: ExperienceModel[];

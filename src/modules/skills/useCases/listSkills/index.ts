@@ -1,4 +1,4 @@
-import { SkillsRepository } from '../../repositories/SkillsRepository';
+import { SkillsRepository } from '../../repositories/implementations/SkillsRepository';
 import { ListSkillsController } from './ListSkillsController';
 import { ListSkillsUseCase } from './ListSkillsUseCase';
 

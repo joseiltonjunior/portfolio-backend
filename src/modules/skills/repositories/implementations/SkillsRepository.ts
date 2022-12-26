@@ -1,5 +1,5 @@
-import { SkillModel } from '../model/Skill';
-import { ICreateSkillDTO, ISkillsRepository } from './ISkillsRepository';
+import { SkillModel } from '../../model/Skill';
+import { ICreateSkillDTO, ISkillsRepository } from '../ISkillsRepository';
 
 class SkillsRepository implements ISkillsRepository {
   private Skills: SkillModel[];
