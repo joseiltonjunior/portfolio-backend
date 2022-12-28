@@ -36,6 +36,18 @@ class SkillsRepository implements ISkillsRepository {
     const Skill = this.Skills.find(Skill => Skill.name === name);
     return Skill;
   }
+
+  findById(id: string): SkillModel {
+    const Skill = this.Skills.find(Skill => Skill.id === id);
+    return Skill;
+  }
+
+  delete(id: string): void {
+    const remove = this.Skills.find(Skill => Skill.id === id);
+    const index = this.Skills.indexOf(remove, 1);
+
+    this.Skills.splice(index, 1);
+  }
 }
 
 export { SkillsRepository };
