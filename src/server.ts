@@ -1,10 +1,10 @@
-import express from "express";
-import { experiencesRoutes } from "./routes/experiences.routes";
+import express from 'express';
+import { router } from './routes';
 
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-app.use("/experiences", experiencesRoutes)
+app.use(router);
 
-app.listen(3333, () => console.log("Server is running!"));
+app.listen(3333, () => console.log('Server is running!'));

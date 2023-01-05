@@ -1,4 +1,4 @@
-import { v4 as uuidV4 } from 'uuid'
+import { v4 as uuidV4 } from 'uuid';
 
 class ExperienceModel {
   name: string;
@@ -6,7 +6,7 @@ class ExperienceModel {
   activities: string;
   technologies?: string;
   time: Date;
-  id?: string
+  id?: string;
 
   constructor() {
     if (!this.id) {
@@ -15,4 +15,4 @@ class ExperienceModel {
   }
 }
 
-export { ExperienceModel }
+export { ExperienceModel };
