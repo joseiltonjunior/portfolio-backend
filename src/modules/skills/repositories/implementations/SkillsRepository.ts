@@ -1,5 +1,9 @@
 import { SkillModel } from '../../model/Skill';
-import { ICreateSkillDTO, ISkillsRepository } from '../ISkillsRepository';
+import {
+  ICreateSkillDTO,
+  IEditSkillDTO,
+  ISkillsRepository,
+} from '../ISkillsRepository';
 
 class SkillsRepository implements ISkillsRepository {
   private Skills: SkillModel[];
@@ -28,12 +32,25 @@ class SkillsRepository implements ISkillsRepository {
     this.Skills.push(Skill);
   }
 
+  edit({ name, url, id }: IEditSkillDTO): void {
+    this.Skills.map(skill => {
+      if (skill.id === id) {
+        skill.name = name;
+        skill.url = url;
+      }
+
+      return;
+    });
+  }
+
   list(): SkillModel[] {
     return this.Skills;
   }
 
   findByName(name: string): SkillModel {
-    const Skill = this.Skills.find(Skill => Skill.name === name);
+    const Skill = this.Skills.find(
+      Skill => Skill.name.toUpperCase() === name.toUpperCase(),
+    );
     return Skill;
   }
 

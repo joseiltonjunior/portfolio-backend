@@ -11,7 +11,7 @@ class DeleteSkillUseCase {
     const skillAlreadyExists = this.SkillsRepository.findById(id);
 
     if (!skillAlreadyExists) {
-      throw new Error('Skill not exists!');
+      throw new Error('Skill not exists.');
     }
 
     this.SkillsRepository.delete(id);

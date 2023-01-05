@@ -5,9 +5,9 @@ class DeleteSkillController {
   constructor(private deleteSkillUseCase: DeleteSkillUseCase) {}
 
   handle(req: Request, res: Response) {
-    const { id } = req.headers;
+    const { id } = req.params;
 
-    this.deleteSkillUseCase.execute({ id: String(id) });
+    this.deleteSkillUseCase.execute({ id });
 
     return res.status(200).json({ message: 'Successfully deleted skill.' });
   }
