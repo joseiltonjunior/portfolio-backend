@@ -8,7 +8,7 @@ class ListExperiencesController {
     const all = this.listExperiencesUseCase.execute();
 
     if (all.length === 0) {
-      return res.json({ message: 'There are no items to display.' });
+      return res.json({ message: 'There are no experiences.' });
     }
 
     return res.json(all);

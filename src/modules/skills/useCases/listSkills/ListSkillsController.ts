@@ -8,7 +8,7 @@ class ListSkillsController {
     const all = this.listSkillsUseCase.execute();
 
     if (all.length === 0) {
-      return res.json({ message: 'There are no items to display.' });
+      return res.json({ message: 'There are no skills.' });
     }
 
     return res.json(all);
