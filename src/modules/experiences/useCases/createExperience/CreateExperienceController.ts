@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { ExperiencesRepository } from '../../repositories/implementations/ExperiencesRepository';
 import { CreateExperienceUseCase } from './CreateExperienceUseCase';
 
 class CreateExperienceController {
@@ -7,25 +8,15 @@ class CreateExperienceController {
   handle(req: Request, res: Response) {
     const { name, office, activities, technologies, time } = req.body;
 
-    // if (!name) {
-    //   throw new Error('name is required.');
-    // }
+    const experiencesRepository = ExperiencesRepository.getInstance();
+    const experienceAlreadyExists = experiencesRepository.findByName(
+      name,
+      office,
+    );
 
-    // if (!office) {
-    //   throw new Error('office is required.');
-    // }
-
-    // if (!activities) {
-    //   throw new Error('activities is required.');
-    // }
-
-    // if (!technologies) {
-    //   throw new Error('technologies is required.');
-    // }
-
-    // if (!time) {
-    //   throw new Error('time is required.');
-    // }
+    if (experienceAlreadyExists) {
+      return res.status(400).json({ message: 'Experience already exists.' });
+    }
 
     this.createExperienceUseCase.execute({
       name,
@@ -35,9 +26,9 @@ class CreateExperienceController {
       time,
     });
 
-    return res
-      .status(201)
-      .json({ message: 'Successfully created experience.' });
+    return res.status(201).json({
+      message: 'Successfully created experience.',
+    });
   }
 }
 

@@ -75,17 +75,14 @@ class ExperiencesRepository implements IExperiencesRepository {
   }
 
   findById(id: string): ExperienceModel {
-    const experience = this.Experiences.find(
-      experience => experience.id === id,
-    );
+    const experience = this.Experiences.find(experience => experience.id == id);
     return experience;
   }
 
   delete(id: string): void {
-    const remove = this.Experiences.find(experience => experience.id === id);
-    const index = this.Experiences.indexOf(remove, 1);
+    const filter = this.Experiences.filter(experience => experience.id != id);
 
-    this.Experiences.splice(index, 1);
+    this.Experiences = filter;
   }
 }
 
