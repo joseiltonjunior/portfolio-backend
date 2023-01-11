@@ -15,7 +15,9 @@ class CreateExperienceController {
     );
 
     if (experienceAlreadyExists) {
-      return res.status(400).json({ message: 'Experience already exists.' });
+      return res
+        .status(400)
+        .json({ error: { message: 'Experience already exists.' } });
     }
 
     this.createExperienceUseCase.execute({
