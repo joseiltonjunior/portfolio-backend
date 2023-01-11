@@ -8,7 +8,7 @@ class ListEducationController {
     const all = this.listEducationUseCase.execute();
 
     if (all.length === 0) {
-      return res.json({ message: 'There are no items to display.' });
+      return res.json({ message: 'There is no education or courses.' });
     }
 
     return res.json(all);

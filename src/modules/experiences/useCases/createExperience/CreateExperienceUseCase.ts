@@ -11,15 +11,6 @@ class CreateExperienceUseCase {
     technologies,
     time,
   }: ICreateExperienceDTO) {
-    const experienceAlreadyExists = this.experiencesRepository.findByName(
-      name,
-      office,
-    );
-
-    if (experienceAlreadyExists) {
-      throw new Error('Experience already exists!');
-    }
-
     this.experiencesRepository.create({
       name,
       office,
