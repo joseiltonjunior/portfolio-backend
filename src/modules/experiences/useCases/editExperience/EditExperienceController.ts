@@ -14,13 +14,15 @@ class EditExperienceController {
     const experienceNameUsed = experiencesRepository.findByName(name, office);
 
     if (!ExperienceAlreadyExists) {
-      return res.status(400).json({ message: 'Experience not exists.' });
+      return res
+        .status(400)
+        .json({ error: { message: 'Experience not exists.' } });
     }
 
     if (experienceNameUsed && experienceNameUsed.id !== id) {
       return res
         .status(400)
-        .json({ message: 'Experience name is already in use.' });
+        .json({ error: { message: 'Experience name is already in use.' } });
     }
 
     this.editExperienceUseCase.execute({

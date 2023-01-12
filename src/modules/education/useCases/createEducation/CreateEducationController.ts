@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { EducationRepository } from '../../repositories/implementations/EducationRepository';
 import { CreateEducationUseCase } from './CreateEducationUseCase';
 
 class CreateEducationController {
@@ -6,6 +7,15 @@ class CreateEducationController {
 
   handle(req: Request, res: Response) {
     const { name, description, course, time } = req.body;
+
+    const educationRepository = EducationRepository.getInstance();
+    const educationAlreadyExists = educationRepository.findByName(name);
+
+    if (educationAlreadyExists) {
+      return res
+        .status(400)
+        .json({ error: { message: 'education already exists.' } });
+    }
 
     this.createEducationUseCase.execute({
       name,

@@ -1,13 +1,20 @@
-import { Router } from 'express';
+import { Request, Response, Router } from 'express';
+import { validationResult } from 'express-validator';
 
 import { createSkillController } from '../modules/skills/useCases/createSkill';
 import { deleteSkillController } from '../modules/skills/useCases/deleteSkill';
 import { editSkillController } from '../modules/skills/useCases/editSkill';
 import { listSkillController } from '../modules/skills/useCases/listSkills';
+import { skillValidations } from '../validations/skills';
 
 const skillsRoutes = Router();
 
-skillsRoutes.post('/', (req, res) => {
+skillsRoutes.post('/', skillValidations, (req: Request, res: Response) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   return createSkillController.handle(req, res);
 });
 
@@ -19,7 +26,12 @@ skillsRoutes.delete('/:id', (req, res) => {
   return deleteSkillController.handle(req, res);
 });
 
-skillsRoutes.put('/:id', (req, res) => {
+skillsRoutes.put('/:id', skillValidations, (req: Request, res: Response) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   return editSkillController.handle(req, res);
 });
 

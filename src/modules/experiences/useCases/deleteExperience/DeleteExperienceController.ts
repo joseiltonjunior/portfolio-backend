@@ -11,7 +11,9 @@ class DeleteExperienceController {
     const ExperienceAlreadyExists = experiencesRepository.findById(id);
 
     if (!ExperienceAlreadyExists) {
-      return res.status(400).json({ message: 'Experience not exists.' });
+      return res
+        .status(400)
+        .json({ error: { message: 'Experience not exists.' } });
     }
 
     this.deleteExperienceUseCase.execute({ id });
