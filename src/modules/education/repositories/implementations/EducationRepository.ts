@@ -1,6 +1,7 @@
 import { EducationModel } from '../../model/Education';
 import {
   ICreateEducationDTO,
+  IEditEducationDTO,
   IEducationRepository,
 } from '../IEducationRepository';
 
@@ -29,6 +30,19 @@ class EducationRepository implements IEducationRepository {
     this.education.push(education);
   }
 
+  edit({ name, course, description, time, id }: IEditEducationDTO): void {
+    this.education.map(education => {
+      if (education.id == id) {
+        education.name = name;
+        education.course = course;
+        education.description = description;
+        education.time = time;
+      }
+
+      return;
+    });
+  }
+
   list(): EducationModel[] {
     return this.education;
   }
@@ -38,6 +52,17 @@ class EducationRepository implements IEducationRepository {
       experience => experience.name === name,
     );
     return education;
+  }
+
+  findById(id: string): EducationModel {
+    const education = this.education.find(education => education.id == id);
+    return education;
+  }
+
+  delete(id: string): void {
+    const filter = this.education.filter(education => education.id != id);
+
+    this.education = filter;
   }
 }
 
