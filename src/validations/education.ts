@@ -1,6 +1,6 @@
 import { body } from 'express-validator';
 
-export const educationValidations = [
+export const educationValidator = [
   body('name').notEmpty().withMessage('name is required'),
   body('course').notEmpty().withMessage('course is required'),
   body('description').notEmpty().withMessage('description is required'),

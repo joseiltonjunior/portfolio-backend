@@ -1,15 +1,12 @@
-import { ISkillsRepository } from '../../repositories/ISkillsRepository';
-
-interface IRequest {
-  id: string;
-  name: string;
-  url: string;
-}
+import {
+  IEditSkillDTO,
+  ISkillsRepository,
+} from '../../repositories/ISkillsRepository';
 
 class EditSkillUseCase {
   constructor(private SkillsRepository: ISkillsRepository) {}
 
-  execute({ id, name, url }: IRequest) {
+  execute({ id, name, url }: IEditSkillDTO) {
     this.SkillsRepository.edit({
       id,
       name,

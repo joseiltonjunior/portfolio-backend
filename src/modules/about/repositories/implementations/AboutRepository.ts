@@ -26,8 +26,16 @@ class AboutRepository implements IAboutRepository {
     this.about = about;
   }
 
+  edit({ description }: ICreateAboutDTO): void {
+    this.about.description = description;
+  }
+
   list(): AboutModel {
     return this.about;
+  }
+
+  delete(): void {
+    this.about.description = '';
   }
 }
 

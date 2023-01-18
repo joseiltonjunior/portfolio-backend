@@ -1,6 +1,6 @@
 import { body } from 'express-validator';
 
-export const experienceValidations = [
+export const experienceValidator = [
   body('name').notEmpty().withMessage('name is required'),
   body('office').notEmpty().withMessage('office is required'),
   body('activities').notEmpty().withMessage('activities is required'),

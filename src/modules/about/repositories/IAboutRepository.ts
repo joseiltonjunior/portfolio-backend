@@ -7,6 +7,8 @@ export interface ICreateAboutDTO {
 interface IAboutRepository {
   list(): AboutModel;
   create({ description }: ICreateAboutDTO): void;
+  delete(): void;
+  edit({ description }: ICreateAboutDTO): void;
 }
 
 export { IAboutRepository };
