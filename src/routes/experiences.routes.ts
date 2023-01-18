@@ -5,13 +5,13 @@ import { createExperienceController } from '../modules/experiences/useCases/crea
 import { deleteExperienceController } from '../modules/experiences/useCases/deleteExperience';
 import { editExperienceController } from '../modules/experiences/useCases/editExperience';
 import { listExperienceController } from '../modules/experiences/useCases/listExperiences';
-import { experienceValidations } from '../validations/experience';
+import { experienceValidator } from '../validations/experience';
 
 const experiencesRoutes = Router();
 
 experiencesRoutes.post(
   '/',
-  experienceValidations,
+  experienceValidator,
   (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -32,7 +32,7 @@ experiencesRoutes.delete('/:id', (req, res) => {
 
 experiencesRoutes.put(
   '/:id',
-  experienceValidations,
+  experienceValidator,
   (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

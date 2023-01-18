@@ -1,13 +1,12 @@
-import { IAboutRepository } from '../../repositories/IAboutRepository';
-
-interface IRequest {
-  description: string;
-}
+import {
+  IAboutRepository,
+  ICreateAboutDTO,
+} from '../../repositories/IAboutRepository';
 
 class EditAboutUseCase {
   constructor(private AboutRepository: IAboutRepository) {}
 
-  execute({ description }: IRequest) {
+  execute({ description }: ICreateAboutDTO) {
     this.AboutRepository.edit({
       description,
     });

@@ -1,18 +1,19 @@
-import { IExperiencesRepository } from '../../repositories/IExperiencesRepository';
-
-interface IRequest {
-  name: string;
-  office: string;
-  activities: string;
-  technologies: string;
-  time: Date;
-  id: string;
-}
+import {
+  IEditExperienceDTO,
+  IExperiencesRepository,
+} from '../../repositories/IExperiencesRepository';
 
 class EditExperienceUseCase {
   constructor(private ExperiencesRepository: IExperiencesRepository) {}
 
-  execute({ id, name, office, activities, technologies, time }: IRequest) {
+  execute({
+    id,
+    name,
+    office,
+    activities,
+    technologies,
+    time,
+  }: IEditExperienceDTO) {
     this.ExperiencesRepository.edit({
       id,
       name,
