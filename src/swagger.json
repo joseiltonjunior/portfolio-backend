@@ -1,0 +1,165 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Portfolio Documentation",
+    "description": "This is an API Portfolio",
+    "version": "1.0.0",
+    "contact": "joseiltonjunior@gmail.com"
+  },
+  "paths": {
+    "/about": {
+      "post": {
+        "tags": ["About"],
+        "summary": "Create about",
+        "description": "Create new about",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "propeties": {
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "description": "Software Developer, with 3 years of experience in Front-end and Mobile."
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "propeties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Successfully create about"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Client error"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      },
+      "get": {
+        "tags": ["About"],
+        "summary": "List about",
+        "description": "List about",
+        "responses": {
+          "200": {
+            "description": "Successfully list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "propeties": {
+                    "description": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "description": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["About"],
+        "summary": "Edit about",
+        "description": "Edit about",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "propeties": {
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "description": "Software Developer, with 3 years of experience in Front-end, Mobile and Back-end."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully edit About",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "propeties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Successfully edit about"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Client error"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["About"],
+        "summary": "Delete about",
+        "description": "Delete about",
+        "responses": {
+          "200": {
+            "description": "Successfully deleted about",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "propeties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Successfully deleted about"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    }
+  }
+}
