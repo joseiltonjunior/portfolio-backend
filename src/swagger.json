@@ -17,39 +17,45 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "propeties": {
+                "properties": {
                   "description": {
                     "type": "string"
                   }
                 }
-              },
-              "example": {
-                "description": "Software Developer, with 3 years of experience in Front-end and Mobile."
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Successfully created",
+            "description": "string",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "propeties": {
+                  "properties": {
                     "message": {
                       "type": "string"
                     }
                   }
-                },
-                "example": {
-                  "message": "Successfully create about"
                 }
               }
             }
           },
           "400": {
-            "description": "Client error"
+            "description": "string",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500": {
             "description": "Server error"
@@ -62,19 +68,16 @@
         "description": "List about",
         "responses": {
           "200": {
-            "description": "Successfully list",
+            "description": "string",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "propeties": {
+                  "properties": {
                     "description": {
                       "type": "string"
                     }
                   }
-                },
-                "example": {
-                  "description": "string"
                 }
               }
             }
@@ -93,14 +96,11 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "propeties": {
+                "properties": {
                   "description": {
                     "type": "string"
                   }
                 }
-              },
-              "example": {
-                "description": "Software Developer, with 3 years of experience in Front-end, Mobile and Back-end."
               }
             }
           }
@@ -112,20 +112,29 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "propeties": {
+                  "properties": {
                     "message": {
                       "type": "string"
                     }
                   }
-                },
-                "example": {
-                  "message": "Successfully edit about"
                 }
               }
             }
           },
           "400": {
-            "description": "Client error"
+            "description": "string",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500": {
             "description": "Server error"
@@ -143,14 +152,252 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "propeties": {
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/education": {
+      "post": {
+        "tags": ["Education"],
+        "summary": "Create education",
+        "description": "Create new education",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "course": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "time": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
                     "message": {
                       "type": "string"
                     }
                   }
                 },
                 "example": {
-                  "message": "Successfully deleted about"
+                  "message": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "string",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Education"],
+        "summary": "List education",
+        "description": "List education",
+        "responses": {
+          "200": {
+            "description": "Successfully list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "course": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "time": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "string",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/education/{id}": {
+      "put": {
+        "tags": ["Education"],
+        "summary": "Edit education",
+        "description": "Edit education",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "course": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "time": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "string",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "string",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Education"],
+        "summary": "Delete education",
+        "description": "Delete education",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted education",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Education not exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
