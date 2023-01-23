@@ -3,11 +3,9 @@
 <h3 align="center">In progress</h3>
 
 <p align="center">
-  <img src="https://ibb.co/cxyWH84" alt="" border="0">
+  <img src="https://i.ibb.co/kMGLfDN/docs1.png" alt="" border="0">
 
-<img src="https://ibb.co/cxyWH84
-https://ibb.co/ckF8nDC" alt="" border="0">
-
+  <img src="https://i.ibb.co/Cm79GhM/docs2.png" alt="" border="0">
 </p>
 
 ```sh
